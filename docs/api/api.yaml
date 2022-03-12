@@ -1,0 +1,135 @@
+openapi: "3.0.0"
+info:
+  title: "Wutsi Tracking API"
+  description: API for tracking user activities
+  version: "1.0.0"
+
+servers:
+  - url: https://wutsi-tracking-server-test.herokuapp.com
+    description: Sandbox
+  - url: https://wutsi-tracking-server-prod.herokuapp.com
+    description: Production
+
+paths:
+  /v1/tracks:
+    post:
+      operationId: "push"
+      summary: "Push a tracking message"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PushTrackRequest'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PushTrackResponse'
+      security:
+        - api_key: [ 'tracking-manage' ]
+      tags:
+        - Tracking
+
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: Authorization
+
+  schemas:
+    PushTrackResponse:
+      type: object
+      properties:
+        transactionId:
+          type: string
+          format: uuid
+
+    PushTrackRequest:
+      type: object
+      properties:
+        track:
+          type: object
+          $ref: "#/components/schemas/Track"
+
+    Track:
+      type: object
+      properties:
+        time:
+          type: integer
+          format: int64
+          description: "Time when the tracking event occurred"
+        tenantId:
+          type: string
+          nullable: true
+          description: "ID of the Tenant where the event was fired"
+        correlationId:
+          type: string
+          format: uuid
+          nullable: true
+          description: "ID that groups event"
+        deviceId:
+          type: string
+          format: uuid
+          nullable: true
+          description: "Device unique identifier"
+        accountId:
+          type: string
+          nullable: true
+          description: "User identifier"
+        merchantId:
+          type: string
+          nullable: true
+          description: "Account identifier"
+        productId:
+          type: string
+          nullable: true
+          description: "Identifier of the product associated with the event"
+        ua:
+          type: string
+          nullable: true
+          description: "Browser User Agent string"
+        bot:
+          type: boolean
+          description: Bot event?
+        ip:
+          type: string
+          nullable: true
+          description: "Device internet address"
+        lat:
+          type: number
+          format: double
+          nullable: true
+          description: "Latitude"
+        long:
+          type: number
+          format: double
+          nullable: true
+          description: "Longitude"
+        referer:
+          type: string
+          nullable: true
+        page:
+          type: string
+          nullable: true
+          description: "Name of the page where the event was fired"
+        event:
+          type: string
+          nullable: true
+          description: "Name of the event"
+        value:
+          type: number
+          format: double
+          nullable: true
+          description: "Value associated with the event"
+        url:
+          type: string
+          nullable: true
+          description: "URL where the event was fired"
+        impressions:
+          type: string
+          nullable: true
+          description: "ID if the products printed with this event, separated by |"

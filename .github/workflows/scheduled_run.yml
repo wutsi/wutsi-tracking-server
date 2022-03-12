@@ -1,0 +1,20 @@
+name: scheduled_run
+
+on:
+  schedule:
+    - cron: "0 3,6,9,12,18,21 * * *"   # Every 3 hours
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run
+        run: |
+          curl -sSf https://wutsi-tracking-server-test.herokuapp.com/actuator/health >> /dev/null
+
+  prod:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run
+        run: |
+          curl -sSf https://wutsi-tracking-server-prod.herokuapp.com/actuator/health >> /dev/null

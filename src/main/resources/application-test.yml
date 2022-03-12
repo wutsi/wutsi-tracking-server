@@ -1,0 +1,15 @@
+
+wutsi:
+  client-id: wutsi-tracking
+  platform:
+    security:
+      type: jwt
+    stream:
+      type: rabbitmq
+      rabbitmq:
+        url: ${CLOUDAMQP_URL}
+    storage:
+      type: aws
+      aws:
+        bucket: prod-wutsi-tracking
+
