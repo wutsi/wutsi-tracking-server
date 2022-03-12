@@ -36,7 +36,7 @@ class TrackPersister(
 
         val folder = fmt.format(Date())
         val file = UUID.randomUUID().toString() + ".csv"
-        val path = "$folder/$file"
+        val path = "tracks/$folder/$file"
         val url = storage.store(path, input, "text/csv", Int.MAX_VALUE)
 
         LOGGER.info("Storing ${items.size} track(s) to $url")

@@ -1,4 +1,3 @@
-
 wutsi:
   client-id: wutsi-tracking
   platform:
@@ -11,5 +10,5 @@ wutsi:
     storage:
       type: aws
       aws:
-        bucket: prod-wutsi-tracking
+        bucket: prod-wutsi-track
 
