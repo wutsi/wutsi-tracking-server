@@ -39,6 +39,7 @@ class EventHandler(
             )
         } catch (ex: Exception) {
             logger.setException(ex)
+            throw ex
         } finally {
             logger.log()
         }
