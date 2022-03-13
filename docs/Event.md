@@ -4,4 +4,4 @@
 
 | Event                                   | Source          | Description                                |
 |-----------------------------------------|-----------------|--------------------------------------------|
-| `urn:wutsi:event:tracking:track-pushed` | wutsi-payment   | This event submit a track event to consume |
+| `urn:wutsi:event:tracking:track-pushed` | wutsi-store-bff | This event submit a track event to consume |

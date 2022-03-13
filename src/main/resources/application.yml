@@ -44,6 +44,8 @@ wutsi:
     stream:
       name: ${wutsi.application.name}
       type: local
+      subscription:
+        - wusti-store-bff   # Listen to VIEW, SALE and ORDER events
     tracing:
       client-id: ${wutsi.application.name}
       device-id-provider:

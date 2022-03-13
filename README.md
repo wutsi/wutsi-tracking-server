@@ -9,6 +9,8 @@ API for tracking user activities
 
 # Architecture
 
+![](https://www.plantuml.com/plantuml/png/ROz12u9058JlxrSCT7vTkdaGFVG3maE4I6psD4btmztDAFhlsK8PsF6zcM-6IQnJlVDTIwNfBaQBTd2zAi-Dhl4WO7hdWtUsuOzQOB6JjZK3FUa7JZjrDtgVRhE08yzMnTknyU85F4-XsOUnlfKdfMkXFoB78HCHv3eMidMcLvCrtCA7gYgmZ15ge-ya3embIaGVnzKl)
+
 # Links
 
 - [Tracking Events](docs/Tracking.md)
