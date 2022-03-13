@@ -10,5 +10,5 @@ wutsi:
     storage:
       type: aws
       aws:
-        bucket: prod-wutsi-track
+        bucket: int-wutsi-track
 
