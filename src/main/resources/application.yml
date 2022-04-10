@@ -38,6 +38,11 @@ wutsi:
   client-id: wutsi-tracking
   application:
     name: wutsi-tracking
+    jobs:
+      visit:
+        cron: "0 * 3 * * *" # every day at 3AM
+      visitor:
+        cron: "0 * 3 * * *" # every day at 3AM
   platform:
     security:
       type: jwt

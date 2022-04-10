@@ -12,7 +12,7 @@ internal class TrackWriterTest {
         val out = ByteArrayOutputStream()
 
         TrackWriter().write(arrayListOf(track), out)
-        System.out.println(out)
+        println(out)
 
         val expected = """
             "time","tenantid","correlationid","deviceid","accountid","merchantid","productid","page","event","value","ip","long","lat","referer","bot","ua","url","impressions"
