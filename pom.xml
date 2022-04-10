@@ -25,7 +25,7 @@
     <jdk.version>11</jdk.version>
 
     <commons-io.version>2.11.0</commons-io.version>
-    <java-diff-utils.version>4.5</java-diff-utils.version>
+    <java-diff-utils.version>4.11</java-diff-utils.version>
     <javax-validation.version>2.0.1.Final</javax-validation.version>
     <junit.version>5.8.2</junit.version>
     <kotlin.version>1.6.20</kotlin.version>
