@@ -3,7 +3,7 @@ package com.wutsi.analytics.tracking.event
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.wutsi.analytics.tracking.delegate.PushDelegate
 import com.wutsi.analytics.tracking.dto.PushTrackRequest
-import com.wutsi.platform.core.logging.DefaultKVLogger
+import com.wutsi.platform.core.logging.KVLogger
 import com.wutsi.platform.core.stream.Event
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Service
@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service
 class EventHandler(
     private val objectMapper: ObjectMapper,
     private val delegate: PushDelegate,
+    private val logger: KVLogger
 ) {
     @EventListener
     fun onEvent(event: Event) {
@@ -23,7 +24,6 @@ class EventHandler(
 
     private fun onTrackPushed(payload: TrackPushedPayload) {
         val track = payload.track
-        val logger = DefaultKVLogger()
         logger.add("correlation_id", track.correlationId)
         logger.add("account_id", track.accountId)
         logger.add("merchant_id", track.merchantId)
