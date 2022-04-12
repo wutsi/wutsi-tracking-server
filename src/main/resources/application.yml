@@ -39,10 +39,15 @@ wutsi:
   application:
     name: wutsi-tracking
     jobs:
-      visit:
+      daily-visit:
         cron: "0 0 3 * * *" # every day at 3AM
-      visitor:
+      daily-visitor:
         cron: "0 0 3 * * *" # every day at 3AM
+
+      monthly-visit:
+        cron: "0 0 5 * * *" # every day at 6AM
+      monthly-visitor:
+        cron: "0 0 5 * * *" # every day at 6AM
   platform:
     security:
       type: jwt

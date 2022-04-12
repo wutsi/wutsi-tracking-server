@@ -3,13 +3,13 @@ package com.wutsi.analytics.tracking.service.agregator.visitor
 import com.wutsi.analytics.tracking.dto.Track
 import com.wutsi.analytics.tracking.service.InputStreamIterator
 import com.wutsi.analytics.tracking.service.agregator.visit.Visit
-import com.wutsi.analytics.tracking.service.agregator.visit.VisitAggregator
+import com.wutsi.analytics.tracking.service.agregator.visit.VisitDailyAggregator
 import java.time.LocalDate
 
 /**
  * Aggregate the number visitors by product
  */
-class VisitorAggregator(date: LocalDate) : VisitAggregator(date) {
+class VisitorDailyAggregator(date: LocalDate) : VisitDailyAggregator(date) {
     override fun loadItems(iterator: InputStreamIterator): List<Visit> {
         val items = super.loadItems(iterator)
         return reduce(items)

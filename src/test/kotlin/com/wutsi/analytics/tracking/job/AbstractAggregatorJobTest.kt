@@ -13,7 +13,7 @@ import java.time.Clock
 import java.time.Instant
 import java.time.ZoneId
 
-abstract class AbstractDailyAggregatorJobTest : AbstractEndpointTest() {
+abstract class AbstractAggregatorJobTest : AbstractEndpointTest() {
     @Autowired
     protected lateinit var storage: StorageService
 
@@ -40,7 +40,7 @@ abstract class AbstractDailyAggregatorJobTest : AbstractEndpointTest() {
         )
     }
 
-    private fun store(path: String): URL {
+    protected fun store(path: String): URL {
         val content = javaClass.getResourceAsStream(path)
         return storage.store(path, content)
     }

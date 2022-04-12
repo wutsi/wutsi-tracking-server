@@ -14,11 +14,13 @@ import feign.FeignException
 import feign.Request
 import feign.RequestTemplate
 import org.junit.jupiter.api.BeforeEach
+import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.web.client.RestTemplate
 import java.nio.charset.Charset
 import java.util.UUID
 
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 abstract class AbstractEndpointTest {
     companion object {
         const val DEVICE_ID = "0000-1111"
@@ -35,7 +37,7 @@ abstract class AbstractEndpointTest {
     lateinit var traceId: String
 
     @BeforeEach
-    open fun setUp() {
+    fun setUp() {
         traceId = UUID.randomUUID().toString()
         doReturn(DEVICE_ID).whenever(tracingContext).deviceId()
         doReturn(traceId).whenever(tracingContext).traceId()

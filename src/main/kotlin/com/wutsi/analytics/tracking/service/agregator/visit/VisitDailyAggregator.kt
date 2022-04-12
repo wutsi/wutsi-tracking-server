@@ -12,7 +12,7 @@ import java.time.LocalDate
 /**
  * Aggregate the number visits by product
  */
-open class VisitAggregator(date: LocalDate) : AbstractDailyAggregator<Visit>(date) {
+open class VisitDailyAggregator(date: LocalDate) : AbstractDailyAggregator<Visit>(date) {
     override fun accept(track: Track): Boolean =
         EventType.VIEW.name.equals(track.event, true) &&
             track.productId != null
@@ -34,8 +34,7 @@ open class VisitAggregator(date: LocalDate) : AbstractDailyAggregator<Visit>(dat
     @Throws(IOException::class, CsvException::class)
     override fun aggregate(iterator: InputStreamIterator, output: OutputStream) {
         val items = loadItems(iterator)
-        if (items.isNotEmpty())
-            VisitWriter().write(items, output)
+        VisitWriter().write(items, output)
     }
 
     protected open fun getKey(track: Track): String =
