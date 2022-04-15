@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service
 import java.time.LocalDate
 
 @Service
-class VisitMonthlyAggregatorJob : AbstractMonthlyAggregatorJob<Counter>() {
+class ChatMonthlyAggregatorJob : AbstractMonthlyAggregatorJob<Counter>() {
     override fun getAggregator(date: LocalDate) = CounterMonthlyAggregator()
-    override fun getName() = "visit"
+    override fun getName() = "chat"
 
-    @Scheduled(cron = "\${wutsi.application.jobs.monthly-visit.cron}")
+    @Scheduled(cron = "\${wutsi.application.jobs.monthly-chat.cron}")
     override fun run() {
         super.run()
     }

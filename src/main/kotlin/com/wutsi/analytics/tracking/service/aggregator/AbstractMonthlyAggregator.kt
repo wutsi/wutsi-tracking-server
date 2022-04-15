@@ -1,4 +1,4 @@
-package com.wutsi.analytics.tracking.service.agregator
+package com.wutsi.analytics.tracking.service.aggregator
 
 import com.opencsv.CSVReader
 import com.wutsi.analytics.tracking.service.Aggregator

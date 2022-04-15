@@ -39,14 +39,14 @@ wutsi:
   application:
     name: wutsi-tracking
     jobs:
+      daily-chat:
+        cron: "0 0 3 * * *" # every day at 3AM
       daily-visit:
         cron: "0 0 3 * * *" # every day at 3AM
-      daily-visitor:
-        cron: "0 0 3 * * *" # every day at 3AM
 
-      monthly-visit:
+      monthly-chat:
         cron: "0 0 5 * * *" # every day at 6AM
-      monthly-visitor:
+      monthly-visit:
         cron: "0 0 5 * * *" # every day at 6AM
   platform:
     security:

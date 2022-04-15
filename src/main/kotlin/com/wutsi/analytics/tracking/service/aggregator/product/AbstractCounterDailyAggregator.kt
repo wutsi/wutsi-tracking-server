@@ -1,26 +1,25 @@
-package com.wutsi.analytics.tracking.service.agregator.visit
+package com.wutsi.analytics.tracking.service.aggregator.product
 
 import com.opencsv.exceptions.CsvException
 import com.wutsi.analytics.tracking.dto.Track
 import com.wutsi.analytics.tracking.entity.EventType
 import com.wutsi.analytics.tracking.service.InputStreamIterator
-import com.wutsi.analytics.tracking.service.agregator.AbstractDailyAggregator
+import com.wutsi.analytics.tracking.service.aggregator.AbstractDailyAggregator
 import java.io.IOException
 import java.io.OutputStream
 import java.time.LocalDate
 
-/**
- * Aggregate the number visits by product
- */
-open class VisitDailyAggregator(date: LocalDate) : AbstractDailyAggregator<Visit>(date) {
+abstract class AbstractCounterDailyAggregator(date: LocalDate) : AbstractDailyAggregator<Counter>(date) {
+    protected abstract fun getEventType(): EventType
+
     override fun accept(track: Track): Boolean =
-        EventType.VIEW.name.equals(track.event, true) &&
+        getEventType().name.equals(track.event, true) &&
             track.productId != null
 
-    override fun process(track: Track, items: MutableMap<String, Visit>) {
+    override fun process(track: Track, items: MutableMap<String, Counter>) {
         val key = getKey(track)
         if (!items.containsKey(key))
-            items[key] = Visit(
+            items[key] = Counter(
                 time = track.time,
                 tenantId = track.tenantId,
                 accountId = track.accountId,
@@ -34,7 +33,7 @@ open class VisitDailyAggregator(date: LocalDate) : AbstractDailyAggregator<Visit
     @Throws(IOException::class, CsvException::class)
     override fun aggregate(iterator: InputStreamIterator, output: OutputStream) {
         val items = loadItems(iterator)
-        VisitWriter().write(items, output)
+        CounterWriter().write(items, output)
     }
 
     protected open fun getKey(track: Track): String =

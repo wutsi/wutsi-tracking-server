@@ -1,8 +1,8 @@
-package com.wutsi.analytics.tracking.service.agregator.visit
+package com.wutsi.analytics.tracking.service.aggregator.product
 
-import com.wutsi.analytics.tracking.service.agregator.AbstractWriter
+import com.wutsi.analytics.tracking.service.aggregator.AbstractWriter
 
-class VisitWriter : AbstractWriter<Visit>() {
+class CounterWriter : AbstractWriter<Counter>() {
     override fun headers(): Array<String> = arrayOf(
         "time",
         "tenantid",
@@ -11,7 +11,7 @@ class VisitWriter : AbstractWriter<Visit>() {
         "count"
     )
 
-    override fun row(data: Visit): Array<String?> = arrayOf(
+    override fun row(data: Counter): Array<String?> = arrayOf(
         data.time.toString(),
         data.tenantId,
         data.merchantId,

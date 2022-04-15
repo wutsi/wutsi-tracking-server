@@ -1,4 +1,4 @@
-package com.wutsi.analytics.tracking.service.agregator.visit
+package com.wutsi.analytics.tracking.service.aggregator.product
 
 import com.wutsi.analytics.tracking.service.aggregator.AbstractAggregatorTestBase
 import org.junit.jupiter.api.Test

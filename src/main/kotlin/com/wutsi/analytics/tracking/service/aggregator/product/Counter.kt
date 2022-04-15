@@ -1,6 +1,6 @@
-package com.wutsi.analytics.tracking.service.agregator.visit
+package com.wutsi.analytics.tracking.service.aggregator.product
 
-data class Visit(
+data class Counter(
     var time: Long = 0,
     var tenantId: String? = null,
     var accountId: String? = null,

@@ -1,4 +1,4 @@
-package com.wutsi.analytics.tracking.service.agregator
+package com.wutsi.analytics.tracking.service.aggregator
 
 import com.wutsi.analytics.tracking.dto.Track
 import java.util.Locale

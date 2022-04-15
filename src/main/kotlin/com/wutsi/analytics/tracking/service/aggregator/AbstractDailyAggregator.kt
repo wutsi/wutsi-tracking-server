@@ -1,4 +1,4 @@
-package com.wutsi.analytics.tracking.service.agregator
+package com.wutsi.analytics.tracking.service.aggregator
 
 import com.opencsv.CSVReader
 import com.wutsi.analytics.tracking.dto.Track
@@ -47,7 +47,7 @@ abstract class AbstractDailyAggregator<T>(private val date: LocalDate) : Aggrega
     }
 
     protected fun reject(track: Track): Boolean =
-        track.bot || !isDateValid(track)
+        track.bot || !isDateValid(track) || (track.accountId != null && track.accountId == track.merchantId)
 
     private fun isDateValid(track: Track): Boolean {
         val trackDate = Instant.ofEpochMilli(track.time).atZone(ZoneId.of("UTC")).toLocalDate()
