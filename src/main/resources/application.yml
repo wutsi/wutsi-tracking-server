@@ -55,7 +55,8 @@ wutsi:
       name: ${wutsi.application.name}
       type: local
       subscriptions:
-        - wutsi-store-bff   # Listen to VIEW, SALE and ORDER events
+        - wutsi-store-bff   # Listen to product related events
+        - wutsi-shell-bff   # Listen to navigation events
     tracing:
       client-id: ${wutsi.application.name}
       device-id-provider:
