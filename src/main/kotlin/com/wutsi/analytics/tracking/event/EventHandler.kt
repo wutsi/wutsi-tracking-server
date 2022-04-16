@@ -24,14 +24,13 @@ class EventHandler(
 
     private fun onTrackPushed(payload: TrackPushedPayload) {
         val track = payload.track
-        logger.add("correlation_id", track.correlationId)
-        logger.add("account_id", track.accountId)
-        logger.add("merchant_id", track.merchantId)
-        logger.add("product_id", track.productId)
-        logger.add("tenant_id", track.tenantId)
-        logger.add("page", track.page)
-        logger.add("event", track.event)
-        logger.add("value", track.value)
+        logger.add("track_correlation_id", track.correlationId)
+        logger.add("track_account_id", track.accountId)
+        logger.add("track_merchant_id", track.merchantId)
+        logger.add("track_product_id", track.productId)
+        logger.add("track_page", track.page)
+        logger.add("track_event", track.event)
+        logger.add("track_value", track.value)
 
         try {
             delegate.invoke(
