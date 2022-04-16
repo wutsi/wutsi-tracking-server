@@ -5,5 +5,6 @@ enum class EventType {
     SALE,
     ORDER,
     LOAD,
-    CHAT
+    CHAT,
+    SHARE
 }
