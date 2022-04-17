@@ -41,10 +41,14 @@ wutsi:
     jobs:
       daily-chat:
         cron: "0 0 3 * * *" # every day at 3AM
+      daily-share:
+        cron: "0 0 3 * * *" # every day at 3AM
       daily-visit:
         cron: "0 0 3 * * *" # every day at 3AM
 
       monthly-chat:
+        cron: "0 0 5 * * *" # every day at 6AM
+      monthly-share:
         cron: "0 0 5 * * *" # every day at 6AM
       monthly-visit:
         cron: "0 0 5 * * *" # every day at 6AM

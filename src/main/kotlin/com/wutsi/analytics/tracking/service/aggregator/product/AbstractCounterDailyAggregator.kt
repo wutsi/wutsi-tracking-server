@@ -33,7 +33,8 @@ abstract class AbstractCounterDailyAggregator(date: LocalDate) : AbstractDailyAg
     @Throws(IOException::class, CsvException::class)
     override fun aggregate(iterator: InputStreamIterator, output: OutputStream) {
         val items = loadItems(iterator)
-        CounterWriter().write(items, output)
+        if (items.isNotEmpty())
+            CounterWriter().write(items, output)
     }
 
     protected open fun getKey(track: Track): String =
