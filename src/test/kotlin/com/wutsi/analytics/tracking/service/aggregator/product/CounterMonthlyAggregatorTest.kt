@@ -9,10 +9,10 @@ internal class CounterMonthlyAggregatorTest : AbstractAggregatorTestBase() {
     @Test
     fun aggregate() {
         test(
-            "/aggregator/monthly/visit/output.csv",
-            "/aggregator/monthly/visit/2020-04-14.csv",
-            "/aggregator/monthly/visit/2020-04-15.csv",
-            "/aggregator/monthly/visit/2020-04-16.csv",
+            "/aggregator/monthly/view/output.csv",
+            "/aggregator/monthly/view/2020-04-14.csv",
+            "/aggregator/monthly/view/2020-04-15.csv",
+            "/aggregator/monthly/view/2020-04-16.csv",
         )
     }
 }

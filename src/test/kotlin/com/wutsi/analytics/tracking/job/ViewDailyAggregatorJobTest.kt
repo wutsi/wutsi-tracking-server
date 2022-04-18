@@ -5,9 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired
 import java.io.File
 import kotlin.test.assertTrue
 
-internal class VisitDailyAggregatorJobTest : AbstractAggregatorJobTest() {
+internal class ViewDailyAggregatorJobTest : AbstractAggregatorJobTest() {
     @Autowired
-    private lateinit var job: VisitDailyAggregatorJob
+    private lateinit var job: ViewDailyAggregatorJob
 
     @Test
     fun run() {

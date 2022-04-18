@@ -2,15 +2,17 @@ package com.wutsi.analytics.tracking.job
 
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.test.context.jdbc.Sql
 import java.io.File
 import kotlin.test.assertTrue
 
-internal class VisitMonthlyAggregatorJobTest : AbstractAggregatorJobTest() {
+@Sql(value = ["/sql/clean.sql", "/sql/ViewMonthlyAggregatorJob.sql"])
+internal class ViewMonthlyAggregatorJobTest : AbstractAggregatorJobTest() {
     @Autowired
-    private lateinit var daily: VisitDailyAggregatorJob
+    private lateinit var daily: ViewDailyAggregatorJob
 
     @Autowired
-    private lateinit var monthly: VisitMonthlyAggregatorJob
+    private lateinit var monthly: ViewMonthlyAggregatorJob
 
     @Test
     fun run() {

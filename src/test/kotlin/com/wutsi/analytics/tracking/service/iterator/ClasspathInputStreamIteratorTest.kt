@@ -11,8 +11,8 @@ internal class ClasspathInputStreamIteratorTest {
     operator fun next() {
         val it: InputStreamIterator = ClasspathInputStreamIterator(
             listOf(
-                "/aggregator/daily/visit/2020-04-14-000.csv",
-                "/aggregator/daily/visit/2020-04-14-001.csv",
+                "/aggregator/daily/view/2020-04-14-000.csv",
+                "/aggregator/daily/view/2020-04-14-001.csv",
             )
         )
         assertNotNull(it.next())
@@ -25,9 +25,9 @@ internal class ClasspathInputStreamIteratorTest {
     fun nextWithInvalidPath() {
         val it: InputStreamIterator = ClasspathInputStreamIterator(
             listOf(
-                "/aggregator/daily/visit/2020-04-14-000.csv",
+                "/aggregator/daily/view/2020-04-14-000.csv",
                 "/tracks/xxxxx",
-                "/aggregator/daily/visit/2020-04-14-001.csv",
+                "/aggregator/daily/view/2020-04-14-001.csv",
                 "/tracks/yyyy"
             )
         )

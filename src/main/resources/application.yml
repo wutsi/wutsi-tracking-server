@@ -66,14 +66,14 @@ wutsi:
         cron: "0 0 3 * * *" # every day at 3AM
       daily-share:
         cron: "0 0 3 * * *" # every day at 3AM
-      daily-visit:
+      daily-view:
         cron: "0 0 3 * * *" # every day at 3AM
 
       monthly-chat:
         cron: "0 0 5 * * *" # every day at 6AM
       monthly-share:
         cron: "0 0 5 * * *" # every day at 6AM
-      monthly-visit:
+      monthly-view:
         cron: "0 0 5 * * *" # every day at 6AM
   platform:
     security:

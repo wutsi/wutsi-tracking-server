@@ -4,6 +4,7 @@ import com.opencsv.CSVReader
 import com.wutsi.analytics.tracking.service.Importer
 import com.wutsi.analytics.tracking.service.InputStreamIterator
 import com.wutsi.analytics.tracking.service.aggregator.AbstractCsvMapper
+import org.slf4j.LoggerFactory
 import java.io.InputStreamReader
 import java.sql.Connection
 import java.sql.PreparedStatement
@@ -15,12 +16,10 @@ abstract class AbstractMonthlyImporter<T>(
     protected abstract fun prepareStatement(cnn: Connection): PreparedStatement
     protected abstract fun createCsvMapper(): AbstractCsvMapper<T>
     protected abstract fun map(item: T, stmt: PreparedStatement)
-    protected abstract fun log(item: T, ex: Throwable? = null)
 
     override fun import(iterator: InputStreamIterator): Long {
         val cnn = ds.connection
         try {
-
             val stmt = prepareStatement(cnn)
             try {
                 return import(iterator, stmt)
@@ -61,10 +60,9 @@ abstract class AbstractMonthlyImporter<T>(
                 try {
                     map(item, stmt)
                     stmt.executeUpdate()
-                    log(item)
                     imported++
                 } catch (ex: Exception) {
-                    log(item, ex)
+                    LoggerFactory.getLogger(javaClass).warn("Unable to import row#$row", ex)
                 }
             }
             row++

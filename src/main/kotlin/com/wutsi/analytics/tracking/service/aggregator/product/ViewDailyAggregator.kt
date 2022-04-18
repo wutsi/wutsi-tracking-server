@@ -6,6 +6,6 @@ import java.time.LocalDate
 /**
  * Aggregate the number visits by product
  */
-open class VisitDailyAggregator(date: LocalDate) : AbstractCounterDailyAggregator(date) {
+open class ViewDailyAggregator(date: LocalDate) : AbstractCounterDailyAggregator(date) {
     override fun getEventType() = EventType.VIEW
 }

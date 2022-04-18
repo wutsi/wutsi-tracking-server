@@ -1,10 +1,13 @@
 package com.wutsi.analytics.tracking.job
 
+import com.wutsi.analytics.tracking.service.Importer
 import java.net.URL
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 abstract class AbstractDailyAggregatorJob : AbstractAggregatorJob() {
+    override fun getImporter(): Importer? = null
+
     override fun getOutputFilePath(date: LocalDate): String {
         val filepath = date.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
         val filename = getName() + ".csv"

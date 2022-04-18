@@ -8,7 +8,6 @@ import com.wutsi.analytics.tracking.service.aggregator.AbstractCsvMapper
 import com.wutsi.analytics.tracking.service.aggregator.product.Counter
 import com.wutsi.analytics.tracking.service.aggregator.product.CounterCsvMapper
 import com.wutsi.analytics.tracking.service.importer.AbstractMonthlyImporter
-import com.wutsi.platform.core.logging.DefaultKVLogger
 import java.sql.Connection
 import java.sql.PreparedStatement
 import java.time.Instant
@@ -42,21 +41,6 @@ abstract class AbstractCounterMonthlyImporter(
         stmt.setLong(4, item.count)
         stmt.setLong(5, item.count)
         stmt.setLong(6, item.merchantId?.toLong() ?: -1)
-    }
-
-    override fun log(item: Counter, ex: Throwable?) {
-        val date = toLocalDate(item)
-        val logger = DefaultKVLogger()
-
-        logger.add("importer", javaClass.simpleName)
-        logger.add("date", date)
-        logger.add("product_id", item.productId)
-        logger.add("merchant_id", item.merchantId)
-        logger.add("count", item.count)
-        logger.add("success", true)
-        if (ex != null)
-            logger.setException(ex)
-        logger.log()
     }
 
     private fun toLocalDate(item: Counter): LocalDate =
