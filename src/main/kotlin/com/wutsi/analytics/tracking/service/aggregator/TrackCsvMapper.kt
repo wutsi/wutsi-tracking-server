@@ -31,7 +31,8 @@ class TrackCsvMapper {
             referer = getString("referer", col),
             url = getString("url", col),
             impressions = getString("impressions", col),
-            bot = "true".equals(getString("bot", col))
+            bot = "true".equals(getString("bot", col)),
+            deviceType = getString("devicetype", col)
         )
 
     private fun getString(column: String, col: Array<String>): String? {

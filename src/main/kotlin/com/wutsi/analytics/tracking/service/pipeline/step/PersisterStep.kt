@@ -6,7 +6,7 @@ import com.wutsi.analytics.tracking.service.pipeline.Step
 import java.util.Collections
 import javax.annotation.PreDestroy
 
-open class StepPersist(
+open class PersisterStep(
     private val persister: TrackPersister,
     private val bufferSize: Int = 1000,
 ) : Step {
@@ -25,11 +25,12 @@ open class StepPersist(
         buffer.removeAll(copy)
     }
 
-    override fun process(track: Track) {
+    override fun process(track: Track): Track {
         buffer.add(track)
         if (shouldFlush()) {
             flush()
         }
+        return track
     }
 
     private fun shouldFlush(): Boolean {

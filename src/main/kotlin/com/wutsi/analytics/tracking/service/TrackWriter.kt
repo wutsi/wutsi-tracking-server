@@ -43,7 +43,8 @@ class TrackWriter {
                 "bot",
                 "ua",
                 "url",
-                "impressions"
+                "impressions",
+                "devicetype"
             )
         )
     }
@@ -72,7 +73,8 @@ class TrackWriter {
                 string(track.bot),
                 string(track.ua),
                 string(track.url),
-                string(track.impressions)
+                string(track.impressions),
+                string(track.deviceType)
             )
         )
     }

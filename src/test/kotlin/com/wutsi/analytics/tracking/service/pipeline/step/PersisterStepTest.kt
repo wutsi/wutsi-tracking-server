@@ -10,14 +10,14 @@ import com.wutsi.analytics.tracking.service.TrackPersister
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-internal class StepPersistTest {
+internal class PersisterStepTest {
     private lateinit var persister: TrackPersister
-    private lateinit var step: StepPersist
+    private lateinit var step: PersisterStep
 
     @BeforeEach
     fun setUp() {
         persister = mock()
-        step = StepPersist(persister, 5)
+        step = PersisterStep(persister, 5)
     }
 
     @Test

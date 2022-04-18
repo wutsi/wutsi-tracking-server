@@ -2,7 +2,9 @@ package com.wutsi.analytics.tracking.config
 
 import com.wutsi.analytics.tracking.service.TrackPersister
 import com.wutsi.analytics.tracking.service.pipeline.Pipeline
-import com.wutsi.analytics.tracking.service.pipeline.step.StepPersist
+import com.wutsi.analytics.tracking.service.pipeline.step.BotStep
+import com.wutsi.analytics.tracking.service.pipeline.step.DeviceTypeStep
+import com.wutsi.analytics.tracking.service.pipeline.step.PersisterStep
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
@@ -13,10 +15,11 @@ class TrackingConfiguration(
     @Bean
     fun pipeline() = Pipeline(
         arrayListOf(
-            stepPersist() /* IMPORTANT: This MUST always be the last step */
+            BotStep(),
+            DeviceTypeStep(),
+
+            /* IMPORTANT: This MUST always be the last step */
+            PersisterStep(persister, 1000)
         )
     )
-
-    @Bean
-    fun stepPersist() = StepPersist(persister, 1000)
 }

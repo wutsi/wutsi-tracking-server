@@ -1,5 +1,4 @@
 [![](https://github.com/wutsi/wutsi-tracking-server/actions/workflows/master.yml/badge.svg)](https://github.com/wutsi/wutsi-tracking-server/actions/workflows/master.yml)
-[![](https://github.com/wutsi/wutsi-tracking-server/actions/workflows/sheduled_run.yml/badge.svg)](https://github.com/wutsi/wutsi-tracking-server/actions/workflows/sheduled_run.yml)
 
 [![JDK](https://img.shields.io/badge/jdk-11-brightgreen.svg)](https://jdk.java.net/11/)
 [![](https://img.shields.io/badge/maven-3.6-brightgreen.svg)](https://maven.apache.org/download.cgi)
@@ -7,12 +6,55 @@
 
 API for tracking user activities
 
-# Architecture
+# Installation Prerequisites
 
-![](https://www.plantuml.com/plantuml/png/TOtF2e9078Jl-nG3dTTBDm-YXnuWF4J84glzD6d_XBkRKVJkuO8aMDUPxvl9dPU33rgnnkgRDMGy_22RQsywl1ZmZQinUDVpkHNO74afEx8tMyY5bazhJiMXZ3ggSYicOXye4FXwXQqIZjsZkKZJ4VjHyYnk8WNToNZkl1ta0Xsf5aYI3F4nnQpoYBiPcpJYTTiA_6TpCkUWrGS0)
+## Configure Github
+- Generate a Github token for accessing packages from GibHub
+  - Goto [https://github.com/settings/tokens](https://github.com/settings/tokens)
+  - Click on `Generate New Token`
+  - Give a value to your token
+  - Select the permissions `read:packages`
+  - Generate the token
+- Set your GitHub environment variables on your machine:
+  - `GITHUB_TOKEN = your-token-value`
+  - `GITHUB_USER = your-github-user-name`
+
+## Maven Setup
+- Download Instance [Maven 3.6+](https://maven.apache.org/download.cgi)
+- Add into `~/m2/settings.xml`
+```
+    <settings>
+        ...
+        <servers>
+            ...
+            <server>
+              <id>github</id>
+              <username>${env.GITHUB_USER}</username>
+              <password>${env.GITHUB_TOKEN}</password>
+            </server>
+        </servers>
+    </settings>
+```
+
+## Usage
+- Install
+```
+$ git clone git@github.com:wutsi/wutsi-tracking-server.git
+```
+
+- Build
+```
+$ cd wutsi-tracking-server
+$ mvn clean install
+```
+
+- Launch the API
+```
+$ mvn spring-boot:run
+```
+
+That's it... the API is up and running! Start sending requests :-)
 
 # Links
-
-- [Tracking Events](docs/Tracking.md)
-- [Event](docs/Event.md)
 - [API](https://wutsi.github.io/wutsi-tracking-server/api/)
+- [Documentation](docs/)

@@ -129,6 +129,15 @@ components:
           type: string
           nullable: true
           description: "URL where the event was fired"
+        deviceType:
+          type: string
+          enum:
+            - DESKTOP
+            - TABLET
+            - MOBILE
+            - TV
+          nullable: true
+          description: "Type of device"
         impressions:
           type: string
           nullable: true

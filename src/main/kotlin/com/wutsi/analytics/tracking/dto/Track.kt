@@ -23,5 +23,6 @@ public data class Track(
     public val event: String? = null,
     public val `value`: Double? = null,
     public val url: String? = null,
+    public val deviceType: String? = null,
     public val impressions: String? = null
 )
