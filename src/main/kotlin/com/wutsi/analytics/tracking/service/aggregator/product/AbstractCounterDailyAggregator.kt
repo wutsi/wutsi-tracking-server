@@ -22,7 +22,6 @@ abstract class AbstractCounterDailyAggregator(date: LocalDate) : AbstractDailyAg
             items[key] = Counter(
                 time = track.time,
                 tenantId = track.tenantId,
-                accountId = track.accountId,
                 merchantId = track.merchantId,
                 productId = track.productId
             )
