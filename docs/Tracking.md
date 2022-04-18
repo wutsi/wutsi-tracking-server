@@ -40,9 +40,9 @@ Aggregates are files generated from the tracking files, that compiles data. Each
 - The daily aggregate: aggregation for a given day
 - The monthly aggregate: aggregation for a given month
 
-### The Visit aggregate
+### The View aggregate
 
-- Description: Count the number of visits on products
+- Description: Count the number of views on products
 - Daily aggregate file: ``aggregates/daily/<yyyy>/<mm>/<dd>/visit.csv``
 - Daily aggregate file: ``aggregates/monthly/<yyyy>/<mm>/visit.csv``
 - File Format
@@ -64,7 +64,7 @@ Aggregates are files generated from the tracking files, that compiles data. Each
     - **productid**: ID of the product associated with the event
     - **count**: Total number of shares
 
-### The chat aggregate
+### The Chat aggregate
 
 - Description: Count the number of chat interactions on products
 - Daily aggregate file: ``aggregates/daily/<yyyy>/<mm>/<dd>/chat.csv``

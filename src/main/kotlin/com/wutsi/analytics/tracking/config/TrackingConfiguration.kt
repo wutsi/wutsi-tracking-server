@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 class TrackingConfiguration(
-    private val persister: TrackPersister
+    private val persister: TrackPersister,
 ) {
     @Bean
     fun pipeline() = Pipeline(

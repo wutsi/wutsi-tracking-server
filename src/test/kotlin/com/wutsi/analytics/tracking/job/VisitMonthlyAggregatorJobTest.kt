@@ -17,6 +17,6 @@ internal class VisitMonthlyAggregatorJobTest : AbstractAggregatorJobTest() {
         daily.run()
         monthly.run()
 
-        assertTrue(File("$storageDirectory/aggregates/monthly/2020/04/visit.csv").exists())
+        assertTrue(File("$storageDirectory/aggregates/monthly/2020/04/view.csv").exists())
     }
 }

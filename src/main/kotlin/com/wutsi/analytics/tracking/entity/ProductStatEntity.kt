@@ -22,8 +22,7 @@ data class ProductStatEntity(
 
     val productId: Long = 0,
     val merchantId: Long = 0,
-    val visitCount: Long = 0,
+    val viewCount: Long = 0,
     val shareCount: Long = 0,
     val chatCount: Long = 0,
-    val interactionFactor: Double = 0.0,
 )

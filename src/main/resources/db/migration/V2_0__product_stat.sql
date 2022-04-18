@@ -4,11 +4,11 @@ CREATE TABLE T_PRODUCT_STAT(
     period_fk       BIGINT NOT NULL REFERENCES T_PERIOD(id),
     merchant_id     BIGINT NOT NULL,
     product_id      BIGINT NOT NULL,
-    visit_count     BIGINT NOT NULL DEFAULT 0,
+    view_count      BIGINT NOT NULL DEFAULT 0,
     share_count     BIGINT NOT NULL DEFAULT 0,
     chat_count      BIGINT NOT NULL DEFAULT 0,
-    interaction_factor DECIMAL(20, 4) NOT NULL DEFAULT 0,
 
+    UNIQUE(period_fk, product_id),
     PRIMARY KEY (id)
 );
 

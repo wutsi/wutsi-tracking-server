@@ -13,6 +13,6 @@ internal class VisitDailyAggregatorJobTest : AbstractAggregatorJobTest() {
     fun run() {
         job.run()
 
-        assertTrue(File("$storageDirectory/aggregates/daily/2020/04/14/visit.csv").exists())
+        assertTrue(File("$storageDirectory/aggregates/daily/2020/04/14/view.csv").exists())
     }
 }
