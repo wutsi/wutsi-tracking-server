@@ -7,18 +7,26 @@ import java.io.File
 import kotlin.test.assertTrue
 
 @Sql(value = ["/sql/clean.sql"])
-internal class ChatMonthlyAggregatorJobTest : AbstractAggregatorJobTest() {
+internal class ChatOverallAggregatorJobTest : AbstractAggregatorJobTest() {
     @Autowired
     private lateinit var daily: ChatDailyAggregatorJob
 
     @Autowired
     private lateinit var monthly: ChatMonthlyAggregatorJob
 
+    @Autowired
+    private lateinit var yearly: ChatYearlyAggregatorJob
+
+    @Autowired
+    private lateinit var overall: ChatOverallAggregatorJob
+
     @Test
     fun run() {
         daily.run()
         monthly.run()
+        yearly.run()
+        overall.run()
 
-        assertTrue(File("$storageDirectory/aggregates/monthly/2020/04/chat.csv").exists())
+        assertTrue(File("$storageDirectory/aggregates/overall/chat.csv").exists())
     }
 }

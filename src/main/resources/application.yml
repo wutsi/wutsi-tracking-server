@@ -76,13 +76,19 @@ wutsi:
       monthly-view:
         cron: "0 0 2 * * *" # every day at 2AM
 
-
       yearly-chat:
         cron: "0 0 3 * * *" # every day at 3AM
       yearly-share:
         cron: "0 0 3 * * *" # every day at 3AM
       yearly-view:
         cron: "0 0 3 * * *" # every day at 3AM
+
+      overall-chat:
+        cron: "0 0 4 * * *" # every day at 4AM
+      overall-share:
+        cron: "0 0 4 * * *" # every day at 4AM
+      overall-view:
+        cron: "0 0 4 * * *" # every day at 4AM
 
   platform:
     security:
