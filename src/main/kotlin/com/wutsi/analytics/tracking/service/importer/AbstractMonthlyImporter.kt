@@ -9,6 +9,7 @@ import java.io.InputStreamReader
 import java.sql.Connection
 import java.sql.PreparedStatement
 import javax.sql.DataSource
+import javax.transaction.Transactional
 
 abstract class AbstractMonthlyImporter<T>(
     private val ds: DataSource
@@ -17,6 +18,7 @@ abstract class AbstractMonthlyImporter<T>(
     protected abstract fun createCsvMapper(): AbstractCsvMapper<T>
     protected abstract fun map(item: T, stmt: PreparedStatement)
 
+    @Transactional
     override fun import(iterator: InputStreamIterator): Long {
         val cnn = ds.connection
         try {

@@ -63,18 +63,27 @@ wutsi:
     name: wutsi-tracking
     jobs:
       daily-chat:
-        cron: "0 0 3 * * *" # every day at 3AM
+        cron: "0 0 1 * * *" # every day at 1AM
       daily-share:
-        cron: "0 0 3 * * *" # every day at 3AM
+        cron: "0 0 1 * * *" # every day at 1AM
       daily-view:
-        cron: "0 0 3 * * *" # every day at 3AM
+        cron: "0 0 1 * * *" # every day at 1AM
 
       monthly-chat:
-        cron: "0 0 5 * * *" # every day at 6AM
+        cron: "0 0 2 * * *" # every day at 2AM
       monthly-share:
-        cron: "0 0 5 * * *" # every day at 6AM
+        cron: "0 0 2 * * *" # every day at 2AM
       monthly-view:
-        cron: "0 0 5 * * *" # every day at 6AM
+        cron: "0 0 2 * * *" # every day at 2AM
+
+
+      yearly-chat:
+        cron: "0 0 3 * * *" # every day at 3AM
+      yearly-share:
+        cron: "0 0 3 * * *" # every day at 3AM
+      yearly-view:
+        cron: "0 0 3 * * *" # every day at 3AM
+
   platform:
     security:
       type: jwt
