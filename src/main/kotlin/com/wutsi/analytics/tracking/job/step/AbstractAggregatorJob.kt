@@ -43,7 +43,7 @@ abstract class AbstractAggregatorJob {
         try {
             val outputUrl = aggregate(date, urls, logger)
             if (outputUrl != null) {
-                val imported = import(outputUrl, logger)
+                import(outputUrl, logger)
             }
         } catch (ex: Exception) {
             logger.setException(ex)
