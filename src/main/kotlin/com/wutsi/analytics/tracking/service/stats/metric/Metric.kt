@@ -1,6 +1,6 @@
-package com.wutsi.analytics.tracking.service.stats.counter
+package com.wutsi.analytics.tracking.service.stats.metric
 
-data class Counter(
+data class Metric(
     var time: Long = 0,
     var tenantId: String? = null,
     var merchantId: String? = null,

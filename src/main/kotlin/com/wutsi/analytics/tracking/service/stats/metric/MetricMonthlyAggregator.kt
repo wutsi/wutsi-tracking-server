@@ -1,15 +1,15 @@
-package com.wutsi.analytics.tracking.service.stats.counter
+package com.wutsi.analytics.tracking.service.stats.metric
 
 import com.opencsv.CSVReader
 import com.wutsi.analytics.tracking.service.stats.AbstractMonthlyAggregator
 
-open class CounterMonthlyAggregator : AbstractMonthlyAggregator<Counter>() {
-    override fun getWriter() = CounterWriter()
+open class MetricMonthlyAggregator : AbstractMonthlyAggregator<Metric>() {
+    override fun getWriter() = MetricWriter()
 
-    override fun aggregate(csv: CSVReader, items: MutableMap<String, Counter>) {
+    override fun aggregate(csv: CSVReader, items: MutableMap<String, Metric>) {
         val iterator: Iterator<Array<String>> = csv.iterator()
         var row = 0
-        val mapper = CounterCsvMapper()
+        val mapper = MetricCsvMapper()
         while (iterator.hasNext()) {
             val data = iterator.next()
             if (row == 0) {
@@ -29,6 +29,6 @@ open class CounterMonthlyAggregator : AbstractMonthlyAggregator<Counter>() {
         }
     }
 
-    private fun getKey(visit: Counter): String =
+    private fun getKey(visit: Metric): String =
         visit.productId.toString()
 }

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 import java.time.LocalDate
 
 internal class ShareDailyAggregatorTest : AbstractAggregatorTestBase() {
-    override fun getAggregator() = ShareDailyAggregator(LocalDate.of(2020, 4, 14))
+    override fun getAggregator() = ShareAggregatorDaily(LocalDate.of(2020, 4, 14))
 
     @Test
     fun aggregate() {

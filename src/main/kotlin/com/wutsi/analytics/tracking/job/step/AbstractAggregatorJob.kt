@@ -1,7 +1,6 @@
 package com.wutsi.analytics.tracking.job.step
 
 import com.wutsi.analytics.tracking.service.Aggregator
-import com.wutsi.analytics.tracking.service.Importer
 import com.wutsi.analytics.tracking.service.iterator.StorageInputStreamIterator
 import com.wutsi.platform.core.logging.DefaultKVLogger
 import com.wutsi.platform.core.logging.KVLogger
@@ -30,8 +29,6 @@ abstract class AbstractAggregatorJob {
 
     protected abstract fun getAggregator(date: LocalDate): Aggregator
 
-    protected abstract fun getImporter(): Importer?
-
     open fun run() {
         val logger = DefaultKVLogger()
         val date = LocalDate.now(clock).minusDays(1)
@@ -41,10 +38,7 @@ abstract class AbstractAggregatorJob {
         logger.add("date", date)
         logger.add("file_count", urls.size)
         try {
-            val outputUrl = aggregate(date, urls, logger)
-            if (outputUrl != null) {
-                import(outputUrl, logger)
-            }
+            aggregate(date, urls, logger)
         } catch (ex: Exception) {
             logger.setException(ex)
         } finally {
@@ -66,11 +60,6 @@ abstract class AbstractAggregatorJob {
             logger.add("aggregate_url", url)
             return url
         }
-    }
-
-    private fun import(url: URL, logger: KVLogger) {
-        val count = getImporter()?.import(StorageInputStreamIterator(listOf(url), storage))
-        logger.add("import_count", count)
     }
 
     protected fun store(date: LocalDate, input: InputStream): URL {

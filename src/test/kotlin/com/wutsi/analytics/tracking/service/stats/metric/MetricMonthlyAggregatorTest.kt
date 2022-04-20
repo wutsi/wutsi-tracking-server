@@ -1,10 +1,10 @@
-package com.wutsi.analytics.tracking.service.stats.counter
+package com.wutsi.analytics.tracking.service.stats.metric
 
 import com.wutsi.analytics.tracking.service.AbstractAggregatorTestBase
 import org.junit.jupiter.api.Test
 
-internal class CounterMonthlyAggregatorTest : AbstractAggregatorTestBase() {
-    override fun getAggregator() = CounterMonthlyAggregator()
+internal class MetricMonthlyAggregatorTest : AbstractAggregatorTestBase() {
+    override fun getAggregator() = MetricMonthlyAggregator()
 
     @Test
     fun aggregate() {

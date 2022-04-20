@@ -1,8 +1,8 @@
-package com.wutsi.analytics.tracking.service.stats.counter
+package com.wutsi.analytics.tracking.service.stats.metric
 
 import com.wutsi.analytics.tracking.service.stats.AbstractWriter
 
-class CounterWriter : AbstractWriter<Counter>() {
+class MetricWriter : AbstractWriter<Metric>() {
     override fun headers(): Array<String> = arrayOf(
         "time",
         "tenantid",
@@ -11,7 +11,7 @@ class CounterWriter : AbstractWriter<Counter>() {
         "count"
     )
 
-    override fun row(data: Counter): Array<String?> = arrayOf(
+    override fun row(data: Metric): Array<String?> = arrayOf(
         data.time.toString(),
         data.tenantId,
         data.merchantId,

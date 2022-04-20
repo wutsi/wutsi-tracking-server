@@ -6,16 +6,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:11
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: wutsi-tracking
-        ports:
-          - 5432:5432
-
 
     steps:
       - uses: actions/checkout@v2

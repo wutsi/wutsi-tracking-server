@@ -1,19 +1,16 @@
 package com.wutsi.analytics.tracking.job.step.chat
 
 import com.wutsi.analytics.tracking.job.step.AbstractOverallAggregatorJob
-import com.wutsi.analytics.tracking.service.stats.chat.ChatOverallImporter
-import com.wutsi.analytics.tracking.service.stats.counter.Counter
-import com.wutsi.analytics.tracking.service.stats.counter.CounterOverallAggregator
+import com.wutsi.analytics.tracking.service.stats.metric.Metric
+import com.wutsi.analytics.tracking.service.stats.metric.MetricOverallAggregator
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
 import java.time.LocalDate
 
 @Service
-class ChatOverallAggregatorJob(private val overallImporter: ChatOverallImporter) :
-    AbstractOverallAggregatorJob<Counter>() {
+class ChatOverallAggregatorJob : AbstractOverallAggregatorJob<Metric>() {
     override fun getName() = "chat"
-    override fun getAggregator(date: LocalDate) = CounterOverallAggregator()
-    override fun getImporter() = overallImporter
+    override fun getAggregator(date: LocalDate) = MetricOverallAggregator()
 
     @Scheduled(cron = "\${wutsi.application.jobs.overall-chat.cron}")
     override fun run() {

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 import java.time.LocalDate
 
 internal class ChatDailyAggregatorTest : AbstractAggregatorTestBase() {
-    override fun getAggregator() = ChatDailyAggregator(LocalDate.of(2020, 4, 14))
+    override fun getAggregator() = ChatAggregatorDaily(LocalDate.of(2020, 4, 14))
 
     @Test
     fun aggregate() {
