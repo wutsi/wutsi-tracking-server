@@ -1,4 +1,4 @@
-"time","tenantid","merchantid","productid","count"
+"time","tenantid","merchantid","productid","value"
 "1586837219285","1","555","1","3"
 "1586837219485","1","666","2","1"
 "1586952657000","1","777","3","1"

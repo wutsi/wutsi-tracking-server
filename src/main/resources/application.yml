@@ -45,34 +45,12 @@ wutsi:
     jobs:
       persister:
         cron: "0 0 * * * *" # every hour
-
-      daily-chat:
+      metric-chat:
         cron: "0 0 1 * * *" # every day at 1AM
-      daily-share:
+      metric-share:
         cron: "0 0 1 * * *" # every day at 1AM
-      daily-view:
+      metric-view:
         cron: "0 0 1 * * *" # every day at 1AM
-
-      monthly-chat:
-        cron: "0 0 2 * * *" # every day at 2AM
-      monthly-share:
-        cron: "0 0 2 * * *" # every day at 2AM
-      monthly-view:
-        cron: "0 0 2 * * *" # every day at 2AM
-
-      yearly-chat:
-        cron: "0 0 3 * * *" # every day at 3AM
-      yearly-share:
-        cron: "0 0 3 * * *" # every day at 3AM
-      yearly-view:
-        cron: "0 0 3 * * *" # every day at 3AM
-
-      overall-chat:
-        cron: "0 0 4 * * *" # every day at 4AM
-      overall-share:
-        cron: "0 0 4 * * *" # every day at 4AM
-      overall-view:
-        cron: "0 0 4 * * *" # every day at 4AM
 
   platform:
     security:

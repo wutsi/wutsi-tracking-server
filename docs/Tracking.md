@@ -35,49 +35,36 @@ The user interactions are stored into a tracking file.
 
 # Aggregate files
 
-Aggregates are files generated from the tracking files, that compiles data. Each aggregate has:
+Aggregates are files generate from tracking files, that contains information about a given metric. These files are
+geneerated every day at 1:00 AM.
 
-- The daily aggregate: aggregation for a given day
-- The monthly aggregate: aggregation for a given month
+For each metric, the following aggregates are created:
+
+- The daily aggregate: contains metric data for the previous day. Stored
+  to: ``aggregates/daily/<yyyy>/<mm>/<dd>/<metric-name>.csv``
+- The monthly aggregate: contains metric data for the current month Stored
+  to: ``aggregates/monthly/<yyyy>/<mm><metric-name>.csv``
+- The yearly aggregate: contains metric data for the current year Stored
+  to: ``aggregates/yearly/<yyyy>/<metric-name>.csv``
+- The overall aggregate: contains the metric data for the whole lifespan Stored
+  to: ``aggregates/overall/<metric-name>.csv``
+
+The aggregate file is a CSV file with the following columns:
+- **time**: date/time in millisecond when the event was occured. - **tenantid**: ID of the site where the event fired
+- **merchantid**: ID of the merchant associated with the event. - **productid**: ID of the product associated with the
+event - **value**: Value of the metric
 
 ### The View aggregate
 
-- Description: Count the number of views on products
-- Daily aggregate file: ``aggregates/daily/<yyyy>/<mm>/<dd>/view.csv``
-- Monthly aggregate file: ``aggregates/monthly/<yyyy>/<mm>/vie.csv``
-- Yearly aggregate file: ``aggregates/yearly/<yyyy>/view.csv``
-- Overall aggregate file: ``aggregates/overall/view.csv``
-- File Format
-    - **time**: date/time in millisecond when the event was occured.
-    - **tenantid**: ID of the site where the event fired
-    - **merchantid**: ID of the merchant associated with the event.
-    - **productid**: ID of the product associated with the event
-    - **count**: Total number of views
+- Metric Name: `view`
+- Description: Count the number of views on products.
 
 ### The Share aggregate
 
-- Description: Count the number of shares on products
-- Daily aggregate file: ``aggregates/daily/<yyyy>/<mm>/<dd>/share.csv``
-- Daily aggregate file: ``aggregates/monthly/<yyyy>/<mm>/share.csv``
-- Yearly aggregate file: ``aggregates/yearly/<yyyy>/share.csv``
-- Overall aggregate file: ``aggregates/overall/share.csv``
-- File Format
-    - **time**: date/time in millisecond when the event was occured.
-    - **tenantid**: ID of the site where the event fired
-    - **merchantid**: ID of the merchant associated with the event.
-    - **productid**: ID of the product associated with the event
-    - **count**: Total number of shares
+- Metric Name: `share`
+- Descriptor: Count the number of type product are shared.
 
 ### The Chat aggregate
 
-- Description: Count the number of chat interactions on products
-- Daily aggregate file: ``aggregates/daily/<yyyy>/<mm>/<dd>/chat.csv``
-- Daily aggregate file: ``aggregates/monthly/<yyyy>/<mm>/chat.csv``
-- Yearly aggregate file: ``aggregates/yearly/<yyyy>/chat.csv``
-- Overall aggregate file: ``aggregates/overall/chat.csv``
-- File Format
-    - **time**: date/time in millisecond when the event was occured.
-    - **tenantid**: ID of the site where the event fired
-    - **merchantid**: ID of the merchant associated with the event.
-    - **productid**: ID of the product associated with the event
-    - **count**: Total number of chat interaction
+- Metric Name: `chat`
+- Descriptor: Count the number of time chat interactions are started on products.
