@@ -43,8 +43,10 @@ Aggregates are files generated from the tracking files, that compiles data. Each
 ### The View aggregate
 
 - Description: Count the number of views on products
-- Daily aggregate file: ``aggregates/daily/<yyyy>/<mm>/<dd>/visit.csv``
-- Daily aggregate file: ``aggregates/monthly/<yyyy>/<mm>/visit.csv``
+- Daily aggregate file: ``aggregates/daily/<yyyy>/<mm>/<dd>/view.csv``
+- Monthly aggregate file: ``aggregates/monthly/<yyyy>/<mm>/vie.csv``
+- Yearly aggregate file: ``aggregates/yearly/<yyyy>/view.csv``
+- Overall aggregate file: ``aggregates/overall/view.csv``
 - File Format
     - **time**: date/time in millisecond when the event was occured.
     - **tenantid**: ID of the site where the event fired
@@ -57,6 +59,8 @@ Aggregates are files generated from the tracking files, that compiles data. Each
 - Description: Count the number of shares on products
 - Daily aggregate file: ``aggregates/daily/<yyyy>/<mm>/<dd>/share.csv``
 - Daily aggregate file: ``aggregates/monthly/<yyyy>/<mm>/share.csv``
+- Yearly aggregate file: ``aggregates/yearly/<yyyy>/share.csv``
+- Overall aggregate file: ``aggregates/overall/share.csv``
 - File Format
     - **time**: date/time in millisecond when the event was occured.
     - **tenantid**: ID of the site where the event fired
@@ -69,6 +73,8 @@ Aggregates are files generated from the tracking files, that compiles data. Each
 - Description: Count the number of chat interactions on products
 - Daily aggregate file: ``aggregates/daily/<yyyy>/<mm>/<dd>/chat.csv``
 - Daily aggregate file: ``aggregates/monthly/<yyyy>/<mm>/chat.csv``
+- Yearly aggregate file: ``aggregates/yearly/<yyyy>/chat.csv``
+- Overall aggregate file: ``aggregates/overall/chat.csv``
 - File Format
     - **time**: date/time in millisecond when the event was occured.
     - **tenantid**: ID of the site where the event fired

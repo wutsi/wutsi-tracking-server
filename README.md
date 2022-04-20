@@ -1,4 +1,5 @@
 [![](https://github.com/wutsi/wutsi-tracking-server/actions/workflows/master.yml/badge.svg)](https://github.com/wutsi/wutsi-tracking-server/actions/workflows/master.yml)
+[![](https://github.com/wutsi/wutsi-tracking-server/actions/workflows/sheduled_run.yml/badge.svg)](https://github.com/wutsi/wutsi-tracking-server/actions/workflows/sheduled_run.yml)
 
 [![JDK](https://img.shields.io/badge/jdk-11-brightgreen.svg)](https://jdk.java.net/11/)
 [![](https://img.shields.io/badge/maven-3.6-brightgreen.svg)](https://maven.apache.org/download.cgi)
@@ -6,55 +7,13 @@
 
 API for tracking user activities
 
-# Installation Prerequisites
+# Architecture
 
-## Configure Github
-- Generate a Github token for accessing packages from GibHub
-  - Goto [https://github.com/settings/tokens](https://github.com/settings/tokens)
-  - Click on `Generate New Token`
-  - Give a value to your token
-  - Select the permissions `read:packages`
-  - Generate the token
-- Set your GitHub environment variables on your machine:
-  - `GITHUB_TOKEN = your-token-value`
-  - `GITHUB_USER = your-github-user-name`
-
-## Maven Setup
-- Download Instance [Maven 3.6+](https://maven.apache.org/download.cgi)
-- Add into `~/m2/settings.xml`
-```
-    <settings>
-        ...
-        <servers>
-            ...
-            <server>
-              <id>github</id>
-              <username>${env.GITHUB_USER}</username>
-              <password>${env.GITHUB_TOKEN}</password>
-            </server>
-        </servers>
-    </settings>
-```
-
-## Usage
-- Install
-```
-$ git clone git@github.com:wutsi/wutsi-tracking-server.git
-```
-
-- Build
-```
-$ cd wutsi-tracking-server
-$ mvn clean install
-```
-
-- Launch the API
-```
-$ mvn spring-boot:run
-```
-
-That's it... the API is up and running! Start sending requests :-)
+![](https://www.plantuml.com/plantuml/png/TOsngeD044Nx_OeBhnwRrrc8-OIG8WJPGiqeuheRt9bOXFnxKD04JDexvvp9evIZwE1C7OPRyEm5CfPrt_aM3mEyvs9IYHsjLuk_2piN9lCq7_BXV5ey52j8yPyghNiMEwD7PMNGFcVCRYBAldQGWk_iXQA4iMnvKoUkB98am_8bnUOkU5onMMEgciRYDvkpl-hWNW00)
 
 # Links
+
+- [Tracking Events](docs/Tracking.md)
+- [Event](docs/Event.md)
 - [API](https://wutsi.github.io/wutsi-tracking-server/api/)
-- [Documentation](docs/)
+
