@@ -13,16 +13,17 @@ open class PersisterStep(
     private val buffer = Collections.synchronizedList(mutableListOf<Track>())
 
     @PreDestroy
-    fun destroy() {
+    open fun destroy() {
         flush()
     }
 
-    fun flush() {
+    open fun flush(): Int {
         val copy = mutableListOf<Track>()
         copy.addAll(buffer)
 
         persister.persist(copy)
         buffer.removeAll(copy)
+        return copy.size
     }
 
     override fun process(track: Track): Track {

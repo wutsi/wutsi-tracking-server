@@ -15,11 +15,20 @@ class TrackingConfiguration(
     @Bean
     fun pipeline() = Pipeline(
         arrayListOf(
-            BotStep(),
-            DeviceTypeStep(),
+            botStep(),
+            deviceTypeStep(),
 
             /* IMPORTANT: This MUST always be the last step */
-            PersisterStep(persister, 1000)
+            persisterStep()
         )
     )
+
+    @Bean
+    fun botStep() = BotStep()
+
+    @Bean
+    fun deviceTypeStep() = DeviceTypeStep()
+
+    @Bean
+    fun persisterStep() = PersisterStep(persister, 1000)
 }

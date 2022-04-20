@@ -62,6 +62,9 @@ wutsi:
   application:
     name: wutsi-tracking
     jobs:
+      persister:
+        cron: "0 0 * * * *" # every hour
+
       daily-chat:
         cron: "0 0 1 * * *" # every day at 1AM
       daily-share:
