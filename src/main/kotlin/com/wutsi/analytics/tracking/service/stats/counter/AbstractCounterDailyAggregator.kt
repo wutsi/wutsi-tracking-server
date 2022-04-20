@@ -30,10 +30,11 @@ abstract class AbstractCounterDailyAggregator(date: LocalDate) : AbstractDailyAg
     }
 
     @Throws(IOException::class, CsvException::class)
-    override fun aggregate(iterator: InputStreamIterator, output: OutputStream) {
+    override fun aggregate(iterator: InputStreamIterator, output: OutputStream): Int {
         val items = loadItems(iterator)
         if (items.isNotEmpty())
             CounterWriter().write(items, output)
+        return items.size
     }
 
     protected open fun getKey(track: Track): String =

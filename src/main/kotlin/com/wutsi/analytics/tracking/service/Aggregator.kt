@@ -6,5 +6,5 @@ import java.io.OutputStream
 
 interface Aggregator {
     @Throws(IOException::class, CsvException::class)
-    fun aggregate(iterator: InputStreamIterator, output: OutputStream)
+    fun aggregate(iterator: InputStreamIterator, output: OutputStream): Int
 }

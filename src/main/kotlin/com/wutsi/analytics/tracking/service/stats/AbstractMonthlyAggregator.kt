@@ -10,7 +10,7 @@ abstract class AbstractMonthlyAggregator<T> : Aggregator {
     protected abstract fun getWriter(): AbstractWriter<T>
     protected abstract fun aggregate(csv: CSVReader, items: MutableMap<String, T>)
 
-    override fun aggregate(iterator: InputStreamIterator, output: OutputStream) {
+    override fun aggregate(iterator: InputStreamIterator, output: OutputStream): Int {
         val items = mutableMapOf<String, T>()
         while (iterator.hasNext()) {
             val reader = InputStreamReader(iterator.next())
@@ -22,5 +22,6 @@ abstract class AbstractMonthlyAggregator<T> : Aggregator {
             }
         }
         getWriter().write(items.values.toList(), output)
+        return items.size
     }
 }
