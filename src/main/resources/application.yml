@@ -47,6 +47,8 @@ wutsi:
         cron: "0 0 * * * *" # every hour
       metric-chat:
         cron: "0 0 1 * * *" # every day at 1AM
+      metric-order:
+        cron: "0 0 1 * * *" # every day at 1AM
       metric-share:
         cron: "0 0 1 * * *" # every day at 1AM
       metric-view:

@@ -1,9 +1,8 @@
 package com.wutsi.analytics.tracking.entity
 
-enum class EventType {
-    LOAD,
+enum class MetricType {
     VIEW,
-    ORDER,
     CHAT,
-    SHARE
+    SHARE,
+    ORDER,
 }

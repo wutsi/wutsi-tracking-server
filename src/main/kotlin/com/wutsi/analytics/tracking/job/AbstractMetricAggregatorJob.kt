@@ -1,6 +1,6 @@
 package com.wutsi.analytics.tracking.job
 
-import com.wutsi.analytics.tracking.entity.EventType
+import com.wutsi.analytics.tracking.entity.MetricType
 import com.wutsi.analytics.tracking.service.AbstractAggregator
 import com.wutsi.analytics.tracking.service.metric.Metric
 import com.wutsi.analytics.tracking.service.metric.MetricAggregatorDaily
@@ -21,17 +21,17 @@ abstract class AbstractMetricAggregatorJob : AbstractCronJob() {
     @Autowired
     protected lateinit var clock: Clock
 
-    protected abstract fun getEventType(): EventType
+    protected abstract fun getMetricType(): MetricType
 
     override fun getToken(): String? = null
 
     override fun doRun(): Long {
         val date = LocalDate.now(clock).minusDays(1) // Yesterday
 
-        aggregate(MetricAggregatorDaily(getEventType(), date))
-        aggregate(MetricAggregatorMonthly(getEventType(), date))
-        aggregate(MetricAggregatorYearly(getEventType(), date))
-        aggregate(MetricAggregatorOverall(getEventType(), date))
+        aggregate(MetricAggregatorDaily(getMetricType(), date))
+        aggregate(MetricAggregatorMonthly(getMetricType(), date))
+        aggregate(MetricAggregatorYearly(getMetricType(), date))
+        aggregate(MetricAggregatorOverall(getMetricType(), date))
 
         return -1
     }

@@ -1,6 +1,6 @@
 package com.wutsi.analytics.tracking.service.metric
 
-import com.wutsi.analytics.tracking.entity.EventType
+import com.wutsi.analytics.tracking.entity.MetricType
 import com.wutsi.analytics.tracking.service.AbstractAggregatorTestBase
 import org.junit.jupiter.api.Test
 import java.io.File
@@ -8,7 +8,7 @@ import java.time.LocalDate
 import kotlin.test.assertTrue
 
 internal class MetricAggregatorDailyTest : AbstractAggregatorTestBase() {
-    override fun getAggregator() = MetricAggregatorDaily(EventType.VIEW, LocalDate.of(2020, 4, 14))
+    override fun getAggregator() = MetricAggregatorDaily(MetricType.VIEW, LocalDate.of(2020, 4, 14))
 
     @Test
     fun aggregate() {

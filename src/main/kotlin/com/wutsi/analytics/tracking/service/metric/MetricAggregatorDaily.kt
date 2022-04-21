@@ -2,7 +2,7 @@ package com.wutsi.analytics.tracking.service.metric
 
 import com.opencsv.exceptions.CsvException
 import com.wutsi.analytics.tracking.dto.Track
-import com.wutsi.analytics.tracking.entity.EventType
+import com.wutsi.analytics.tracking.entity.MetricType
 import com.wutsi.analytics.tracking.service.AbstractDailyAggregator
 import com.wutsi.analytics.tracking.service.InputStreamIterator
 import com.wutsi.platform.core.storage.StorageService
@@ -13,11 +13,11 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 class MetricAggregatorDaily(
-    private val eventType: EventType,
+    private val metricType: MetricType,
     date: LocalDate
 ) : AbstractDailyAggregator<Metric>(date) {
     override fun accept(track: Track): Boolean =
-        eventType.name.equals(track.event, true) &&
+        metricType.name.equals(track.event, true) &&
             track.productId != null
 
     override fun process(track: Track, items: MutableMap<String, Metric>) {
@@ -51,7 +51,7 @@ class MetricAggregatorDaily(
 
     override fun getOutputFilePath(date: LocalDate): String {
         val filepath = date.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
-        val filename = eventType.name.lowercase() + ".csv"
+        val filename = metricType.name.lowercase() + ".csv"
         return "aggregates/daily/$filepath/$filename"
     }
 }

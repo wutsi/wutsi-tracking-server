@@ -5,11 +5,11 @@ import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
 
 @Service
-class MetricViewAggregatorJob : AbstractMetricAggregatorJob() {
-    override fun getMetricType() = MetricType.VIEW
-    override fun getJobName() = "metric-view"
+class MetricOrderAggregatorJob : AbstractMetricAggregatorJob() {
+    override fun getMetricType() = MetricType.ORDER
+    override fun getJobName() = "metric-order"
 
-    @Scheduled(cron = "\${wutsi.application.jobs.metric-view.cron}")
+    @Scheduled(cron = "\${wutsi.application.jobs.metric-order.cron}")
     override fun run() {
         super.run()
     }

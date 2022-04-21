@@ -1,7 +1,7 @@
 package com.wutsi.analytics.tracking.service.metric
 
 import com.opencsv.CSVReader
-import com.wutsi.analytics.tracking.entity.EventType
+import com.wutsi.analytics.tracking.entity.MetricType
 import com.wutsi.analytics.tracking.service.AbstractMonthlyAggregator
 import com.wutsi.platform.core.storage.StorageService
 import java.net.URL
@@ -9,7 +9,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 open class MetricAggregatorMonthly(
-    protected val eventType: EventType,
+    protected val metricType: MetricType,
     date: LocalDate
 ) : AbstractMonthlyAggregator<Metric>(date) {
     override fun getWriter() = MetricWriter()
@@ -44,7 +44,7 @@ open class MetricAggregatorMonthly(
 
     override fun getOutputFilePath(date: LocalDate): String {
         val filepath = date.format(DateTimeFormatter.ofPattern("yyyy/MM"))
-        val filename = eventType.name.lowercase() + ".csv"
+        val filename = metricType.name.lowercase() + ".csv"
         return "aggregates/monthly/$filepath/$filename"
     }
 }
