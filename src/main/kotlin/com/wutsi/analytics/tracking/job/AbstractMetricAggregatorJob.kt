@@ -28,24 +28,30 @@ abstract class AbstractMetricAggregatorJob : AbstractCronJob() {
     override fun doRun(): Long {
         val date = LocalDate.now(clock).minusDays(1) // Yesterday
 
-        aggregate(MetricAggregatorDaily(getMetricType(), date))
-        aggregate(MetricAggregatorMonthly(getMetricType(), date))
-        aggregate(MetricAggregatorYearly(getMetricType(), date))
-        aggregate(MetricAggregatorOverall(getMetricType(), date))
-
-        return -1
+        return aggregate(date, MetricAggregatorDaily(getMetricType(), date)) +
+            aggregate(date, MetricAggregatorMonthly(getMetricType(), date)) +
+            aggregate(date, MetricAggregatorYearly(getMetricType(), date)) +
+            aggregate(date, MetricAggregatorOverall(getMetricType(), date))
     }
 
-    private fun aggregate(aggregator: AbstractAggregator<Metric>) {
+    private fun aggregate(date: LocalDate, aggregator: AbstractAggregator<Metric>): Long {
         val logger = DefaultKVLogger()
         logger.add("aggregator", aggregator.javaClass.simpleName)
+        logger.add("metric_type", getMetricType())
+        logger.add("date", date)
+        logger.add("input_urls", aggregator.getInputUrls(date, storage))
+        logger.add("input_path", aggregator.getOutputFilePath(date))
+
         try {
             val count = aggregator.aggregate(storage)
-            logger.add("aggregator_count", count)
+            logger.add("count", count)
             logger.add("success", true)
+
+            return count.toLong()
         } catch (ex: Exception) {
             logger.add("success", false)
             logger.setException(ex)
+            return 0
         } finally {
             logger.log()
         }

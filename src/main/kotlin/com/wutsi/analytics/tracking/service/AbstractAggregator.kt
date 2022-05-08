@@ -11,8 +11,8 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 abstract class AbstractAggregator<T>(private val date: LocalDate) : Aggregator {
-    protected abstract fun getInputUrls(date: LocalDate, storage: StorageService): List<URL>
-    protected abstract fun getOutputFilePath(date: LocalDate): String
+    abstract fun getInputUrls(date: LocalDate, storage: StorageService): List<URL>
+    abstract fun getOutputFilePath(date: LocalDate): String
 
     fun aggregate(storage: StorageService): Int {
         val inputUrls = getInputUrls(date, storage)
@@ -29,7 +29,7 @@ abstract class AbstractAggregator<T>(private val date: LocalDate) : Aggregator {
         }
     }
 
-    protected fun getInputUrls(date: LocalDate, urls: MutableList<URL>, storage: StorageService) {
+    fun getInputUrls(date: LocalDate, urls: MutableList<URL>, storage: StorageService) {
         val path = "tracks/" + date.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
         val found = collectFilesURLs(path, storage)
         urls.addAll(found)
