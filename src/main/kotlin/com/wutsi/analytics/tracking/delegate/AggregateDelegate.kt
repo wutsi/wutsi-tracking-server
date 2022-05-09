@@ -6,6 +6,7 @@ import com.wutsi.analytics.tracking.service.metric.MetricAggregatorMonthly
 import com.wutsi.analytics.tracking.service.metric.MetricAggregatorOverall
 import com.wutsi.analytics.tracking.service.metric.MetricAggregatorYearly
 import com.wutsi.platform.core.storage.StorageService
+import org.springframework.scheduling.annotation.Async
 import org.springframework.stereotype.Service
 import java.time.Clock
 import java.time.LocalDate
@@ -15,6 +16,7 @@ class AggregateDelegate(
     private val storage: StorageService,
     private val clock: Clock
 ) {
+    @Async
     fun invoke(startDate: LocalDate) {
         val endDate = LocalDate.now(clock)
         daily(startDate, endDate)

@@ -62,6 +62,7 @@ class AggregateControllerTest : AbstractEndpointTest() {
 
         assertEquals(HttpStatus.OK, response.statusCode)
 
+        Thread.sleep(30000)
         MetricType.values().forEach {
             val file = it.name.lowercase() + ".csv"
 
