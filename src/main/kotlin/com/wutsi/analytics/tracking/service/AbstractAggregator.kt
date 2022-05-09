@@ -44,7 +44,6 @@ abstract class AbstractAggregator<T>(private val date: LocalDate) : Aggregator {
             logger.add("count", count)
             logger.add("success", true)
             return count
-
         } catch (ex: Exception) {
             logger.add("success", false)
             logger.setException(ex)
