@@ -9,11 +9,14 @@ import java.time.format.DateTimeFormatter
 open class MetricAggregatorYearly(
     metricType: MetricType,
     date: LocalDate
-) : MetricAggregatorMonthly(metricType, date) {
+) : AbstractMetricAggregatorPeriod(metricType, "YEARLY", date) {
     override fun getInputUrls(date: LocalDate, storage: StorageService): List<URL> {
-        val path = "aggregates/monthly/" + date.format(DateTimeFormatter.ofPattern("yyyy/MM"))
+        val path = "aggregates/monthly/" + date.format(DateTimeFormatter.ofPattern("yyyy"))
         return collectFilesURLs(path, storage)
     }
+
+    override fun acceptInputURL(url: URL): Boolean =
+        url.file.endsWith(metricType.name.lowercase() + ".csv")
 
     override fun getOutputFilePath(date: LocalDate): String {
         val filepath = date.format(DateTimeFormatter.ofPattern("yyyy"))

@@ -2,15 +2,22 @@ package com.wutsi.analytics.tracking.service
 
 import com.opencsv.CSVReader
 import com.wutsi.analytics.tracking.dto.Track
+import com.wutsi.platform.core.logging.KVLogger
+import com.wutsi.platform.core.storage.StorageService
 import java.io.InputStreamReader
 import java.io.Reader
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
 
-abstract class AbstractDailyAggregator<T>(private val date: LocalDate) : AbstractAggregator<T>(date) {
+abstract class AbstractAggregatorDaily<T>(private val date: LocalDate) : AbstractAggregator<T>(date) {
     protected abstract fun accept(track: Track): Boolean
     protected abstract fun process(track: Track, items: MutableMap<String, T>)
+
+    override fun beforeAggregate(storage: StorageService, logger: KVLogger) {
+        logger.add("period", "DAILY")
+        super.beforeAggregate(storage, logger)
+    }
 
     protected open fun loadItems(iterator: InputStreamIterator): List<T> {
         val items = mutableMapOf<String, T>()

@@ -1,8 +1,6 @@
 package com.wutsi.analytics.tracking.service
 
 import com.amazonaws.util.IOUtils
-import com.github.difflib.DiffUtils
-import com.github.difflib.patch.Patch
 import com.wutsi.analytics.tracking.service.iterator.ClasspathInputStreamIterator
 import com.wutsi.platform.core.storage.local.LocalStorageService
 import java.io.ByteArrayInputStream
@@ -10,7 +8,7 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.InputStream
 import kotlin.test.BeforeTest
-import kotlin.test.assertTrue
+import kotlin.test.assertEquals
 
 abstract class AbstractAggregatorTestBase {
     protected val storageDirectory: String = System.getProperty("user.home") + "/wutsi/storage"
@@ -33,21 +31,14 @@ abstract class AbstractAggregatorTestBase {
 
         // THEN
         val expected = javaClass.getResourceAsStream(expectedPath)
-        assertCsvMatches(expected, ByteArrayInputStream(out.toByteArray()))
+        assertFileMatches(expected, ByteArrayInputStream(out.toByteArray()))
     }
 
     @Throws(Exception::class)
-    protected fun assertCsvMatches(expected: InputStream?, value: InputStream?) {
-        val patch: Patch<String> = DiffUtils.diff(
-            toLines(value),
-            toLines(expected)
-        )
-        println("Delta: " + patch.deltas)
-        assertTrue(patch.deltas.isEmpty())
+    protected fun assertFileMatches(expected: InputStream?, value: InputStream?) {
+        assertEquals(toString(expected), toString(value))
     }
 
-    private fun toLines(`in`: InputStream?): List<String> =
-        listOf(IOUtils.toString(`in`).split("\\r?\\n"))
-            .filter { !it.isEmpty() }
-            .map { it.toString() + "\n" }
+    private fun toString(`in`: InputStream?): String =
+        IOUtils.toString(`in`).trimIndent()
 }

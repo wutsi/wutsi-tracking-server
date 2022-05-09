@@ -3,8 +3,9 @@ package com.wutsi.analytics.tracking.service.metric
 import com.opencsv.exceptions.CsvException
 import com.wutsi.analytics.tracking.dto.Track
 import com.wutsi.analytics.tracking.entity.MetricType
-import com.wutsi.analytics.tracking.service.AbstractDailyAggregator
+import com.wutsi.analytics.tracking.service.AbstractAggregatorDaily
 import com.wutsi.analytics.tracking.service.InputStreamIterator
+import com.wutsi.platform.core.logging.KVLogger
 import com.wutsi.platform.core.storage.StorageService
 import java.io.IOException
 import java.io.OutputStream
@@ -15,7 +16,7 @@ import java.time.format.DateTimeFormatter
 class MetricAggregatorDaily(
     private val metricType: MetricType,
     date: LocalDate
-) : AbstractDailyAggregator<Metric>(date) {
+) : AbstractAggregatorDaily<Metric>(date) {
     override fun accept(track: Track): Boolean =
         metricType.name.equals(track.event, true) &&
             track.productId != null
@@ -33,6 +34,11 @@ class MetricAggregatorDaily(
             items[key]!!.value++
     }
 
+    override fun beforeAggregate(storage: StorageService, logger: KVLogger) {
+        logger.add("metric", metricType)
+        super.beforeAggregate(storage, logger)
+    }
+
     @Throws(IOException::class, CsvException::class)
     override fun aggregate(iterator: InputStreamIterator, output: OutputStream): Int {
         val items = loadItems(iterator)
@@ -48,6 +54,8 @@ class MetricAggregatorDaily(
         getInputUrls(date.plusDays(1), urls, storage)
         return urls
     }
+
+    override fun acceptInputURL(url: URL): Boolean = true
 
     override fun getOutputFilePath(date: LocalDate): String {
         val filepath = date.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
