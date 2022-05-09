@@ -9,20 +9,16 @@ import com.wutsi.analytics.tracking.service.metric.MetricAggregatorOverall
 import com.wutsi.analytics.tracking.service.metric.MetricAggregatorYearly
 import com.wutsi.platform.core.cron.AbstractCronJob
 import com.wutsi.platform.core.storage.StorageService
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
 import java.time.Clock
 import java.time.LocalDate
 
 @Service
-class MetricAggregatorJob : AbstractCronJob() {
-    @Autowired
-    protected lateinit var storage: StorageService
-
-    @Autowired
-    protected lateinit var clock: Clock
-
+class MetricAggregatorJob(
+    private val storage: StorageService,
+    private val clock: Clock
+) : AbstractCronJob() {
     override fun getToken(): String? = null
 
     override fun getJobName(): String = "metric"

@@ -30,7 +30,7 @@ abstract class AbstractMetricAggregatorJobTest : AbstractEndpointTest() {
     override fun setUp() {
         super.setUp()
 
-        val now = Instant.ofEpochMilli(1586952657000)
+        val now = Instant.ofEpochMilli(1586952657000) // 2020-04-14
         doReturn(now).whenever(clock).instant()
         doReturn(ZoneId.of("UTC")).whenever(clock).zone
 

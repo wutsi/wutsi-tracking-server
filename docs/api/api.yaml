@@ -33,6 +33,26 @@ paths:
       tags:
         - Tracking
 
+  /v1/tracks/aggregate:
+    get:
+      operationId: "aggregate"
+      summary: "Aggregate the tracking events"
+      parameters:
+        - in: query
+          name: start-date
+          description: Date when to start teh aggregation
+          required: true
+          schema:
+            type: string
+            format: date
+      responses:
+        200:
+          description: Success
+      security:
+        - api_key: [ 'tracking-manage' ]
+      tags:
+        - Tracking
+
 components:
   securitySchemes:
     api_key:
@@ -132,10 +152,9 @@ components:
         deviceType:
           type: string
           enum:
-            - DESKTOP
-            - TABLET
             - MOBILE
-            - TV
+            - DESKTOP
+            - APP
           nullable: true
           description: "Type of device"
         impressions:
