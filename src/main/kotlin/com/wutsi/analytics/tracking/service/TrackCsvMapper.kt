@@ -23,6 +23,7 @@ class TrackCsvMapper : AbstractCsvMapper<Track>() {
             url = getString("url", col),
             impressions = getString("impressions", col),
             bot = "true".equals(getString("bot", col)),
-            deviceType = getString("devicetype", col)
+            deviceType = getString("devicetype", col),
+            source = getString("source", col),
         )
 }

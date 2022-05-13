@@ -149,6 +149,10 @@ components:
           type: string
           nullable: true
           description: "URL where the event was fired"
+        source:
+          type: string
+          nullable: true
+          description: "Source of the traffic"
         deviceType:
           type: string
           enum:

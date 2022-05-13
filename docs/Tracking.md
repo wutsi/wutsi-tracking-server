@@ -29,9 +29,16 @@ The user interactions are stored into a tracking file.
     - **url**: URL where the event was fired
     - **impressions**: IDs of the product printed when the event was fired. IDs are separated by |
     - **devicetype**: Type of device. The different values are:
-        - *app*: Mobile application
-        - *mobile*: Mobile web
-        - *desktop*: Desktop browser
+        - *APP*: Mobile application
+        - *MOBILE*: Mobile web
+        - *DESKTOP*: Desktop browser
+    - **source**: Source of the traffic. The values are
+        - **DIRECT**
+        - **EMAIL**
+        - **FACEBOOK**
+        - **WHATSTAPP**
+        - **INSTAGRAM**
+        - **SEO**
 
 # Aggregate files
 
@@ -50,9 +57,10 @@ For each metric, the following aggregates are created:
   to: ``aggregates/overall/<metric-name>.csv``
 
 The aggregate file is a CSV file with the following columns:
+
 - **time**: date/time in millisecond when the event was occured. - **tenantid**: ID of the site where the event fired
 - **merchantid**: ID of the merchant associated with the event. - **productid**: ID of the product associated with the
-event - **value**: Value of the metric
+  event - **value**: Value of the metric
 
 ### The View aggregate
 

@@ -44,7 +44,8 @@ class TrackWriter {
                 "ua",
                 "url",
                 "impressions",
-                "devicetype"
+                "devicetype",
+                "source"
             )
         )
     }
@@ -74,7 +75,8 @@ class TrackWriter {
                 string(track.ua),
                 string(track.url),
                 string(track.impressions),
-                string(track.deviceType)
+                string(track.deviceType),
+                string(track.source)
             )
         )
     }

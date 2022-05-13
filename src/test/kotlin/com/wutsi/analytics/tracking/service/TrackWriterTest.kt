@@ -2,6 +2,7 @@ package com.wutsi.analytics.tracking.service
 
 import com.wutsi.analytics.tracking.dto.Track
 import com.wutsi.analytics.tracking.entity.DeviceType
+import com.wutsi.analytics.tracking.entity.Source
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.io.ByteArrayOutputStream
@@ -16,8 +17,8 @@ internal class TrackWriterTest {
         println(out)
 
         val expected = """
-            "time","tenantid","correlationid","deviceid","accountid","merchantid","productid","page","event","value","ip","long","lat","referer","bot","ua","url","impressions","devicetype"
-            "3333","1","123","sample-device","333","555","1234","SR","pageview","100.0","1.1.2.3","111.0","222.0","https://www.google.ca","false","Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0)","https://www.wutsi.com/read/123/this-is-nice?utm_source=email&utm_campaign=test&utm_medium=email","11|12|13","DESKTOP"
+            "time","tenantid","correlationid","deviceid","accountid","merchantid","productid","page","event","value","ip","long","lat","referer","bot","ua","url","impressions","devicetype","source"
+            "3333","1","123","sample-device","333","555","1234","SR","pageview","100.0","1.1.2.3","111.0","222.0","https://www.google.ca","false","Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0)","https://www.wutsi.com/read/123/this-is-nice?utm_source=email&utm_campaign=test&utm_medium=email","11|12|13","DESKTOP","FACEBOOK"
         """
 
         assertEquals(expected.trimIndent(), out.toString().trimIndent())
@@ -42,6 +43,7 @@ internal class TrackWriterTest {
         url = "https://www.wutsi.com/read/123/this-is-nice?utm_source=email&utm_campaign=test&utm_medium=email",
         impressions = "11|12|13",
         tenantId = "1",
-        deviceType = DeviceType.DESKTOP.name
+        deviceType = DeviceType.DESKTOP.name,
+        source = Source.FACEBOOK.name
     )
 }
