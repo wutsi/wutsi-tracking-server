@@ -18,7 +18,7 @@ class MetricAggregatorDaily(
     date: LocalDate
 ) : AbstractAggregatorDaily<Metric>(date) {
     override fun accept(track: Track): Boolean =
-        metricType.name.equals(track.event, true) &&
+        metricType.eventType.name.equals(track.event, true) &&
             track.productId != null
 
     override fun process(track: Track, items: MutableMap<String, Metric>) {
@@ -28,11 +28,18 @@ class MetricAggregatorDaily(
                 time = track.time,
                 tenantId = track.tenantId,
                 merchantId = track.merchantId,
-                productId = track.productId
+                productId = track.productId,
+                value = toValue(track)
             )
         else
-            items[key]!!.value++
+            items[key]!!.value += toValue(track)
     }
+
+    private fun toValue(track: Track): Long =
+        if (metricType == MetricType.SALE)
+            track.value?.toLong() ?: 0
+        else
+            1
 
     override fun beforeAggregate(storage: StorageService, logger: KVLogger) {
         logger.add("metric", metricType)
