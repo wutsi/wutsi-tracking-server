@@ -9,7 +9,7 @@ API for tracking user activities
 
 # Architecture
 
-![](https://www.plantuml.com/plantuml/png/ROqn3e9044NxESKaraDZPq7m2CR26481-472iclOMIcCTpUYA17R_zwRIRpclOREKEcwYxEmojhdPTlOcc_4_9tJ8QXlPA8PhuumnWrqfrcyFUp7ZjD95B-M8fGjD7kgku00bkKveiKa4l-zmnl65LR5g-lp6f_Kds6C55MLSHJ5FFvwiz75Y_sY0SLif0Js53hp0000)
+![](https://www.plantuml.com/plantuml/png/TS-nJiGm30RWtKzXYTaiR1rEnoCW1eHE7TBMLwfBayXnsW7nxfI8D0XTnzZV_qS-HpMYQRRG-pbunqvHnVItoOtu2OXrV5cJnedAbYBBmjBYmpjRwrVu0gZu-Uqrn_5I_HDrgR-njZ_q9N5YfCDMWACDqUbkApR82pkbg5xCoAKXlvcwwxN5nnFcZniCueVKA-L8tEd7TiilBHORD26GCyiq6fsy-vTPkTlqNxvDZhcNWMK_fkOQp9kYuSnkIBFz1W00)
 
 # Links
 

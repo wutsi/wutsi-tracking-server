@@ -55,9 +55,10 @@ wutsi:
       name: ${wutsi.application.name}
       type: local
       subscriptions:
-        - wutsi-store-bff  # store tracking event
+        - wutsi-store-bff  # product tracking event
         - wutsi-shell-bff  # page navigation event
         - wutsi-web        # web tracking event
+        - wutsi-order      # order events
     tracing:
       client-id: ${wutsi.application.name}
       device-id-provider:
