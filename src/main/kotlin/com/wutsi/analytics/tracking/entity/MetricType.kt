@@ -4,6 +4,6 @@ enum class MetricType(val eventType: EventType) {
     VIEW(EventType.VIEW),
     CHAT(EventType.CHAT),
     SHARE(EventType.SHARE),
-    ORDER(EventType.CHAT),
+    ORDER(EventType.ORDER),
     SALE(EventType.ORDER),
 }
