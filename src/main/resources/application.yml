@@ -51,6 +51,7 @@ wutsi:
   platform:
     security:
       type: jwt
+      api-key: ""
     stream:
       name: ${wutsi.application.name}
       type: local

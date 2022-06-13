@@ -19,8 +19,6 @@ class MetricAggregatorJob(
     private val storage: StorageService,
     private val clock: Clock
 ) : AbstractCronJob() {
-    override fun getToken(): String? = null
-
     override fun getJobName(): String = "metric"
 
     @Scheduled(cron = "\${wutsi.application.jobs.metric.cron}")
