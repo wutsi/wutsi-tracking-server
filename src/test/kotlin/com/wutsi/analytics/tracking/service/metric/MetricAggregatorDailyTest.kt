@@ -35,7 +35,8 @@ internal class MetricAggregatorDailyTest : AbstractAggregatorTestBase() {
         assertTrue(file.exists())
 
         assertFileMatches(
-            javaClass.getResourceAsStream("/aggregator/daily/view/output.csv"), ByteArrayInputStream(file.readBytes())
+            javaClass.getResourceAsStream("/aggregator/daily/view/output.csv"),
+            ByteArrayInputStream(file.readBytes())
         )
     }
 }

@@ -35,7 +35,8 @@ internal class SaleAggregatorDailyTest : AbstractAggregatorTestBase() {
         assertTrue(file.exists())
 
         assertFileMatches(
-            javaClass.getResourceAsStream("/aggregator/daily/sale/output.csv"), ByteArrayInputStream(file.readBytes())
+            javaClass.getResourceAsStream("/aggregator/daily/sale/output.csv"),
+            ByteArrayInputStream(file.readBytes())
         )
     }
 }

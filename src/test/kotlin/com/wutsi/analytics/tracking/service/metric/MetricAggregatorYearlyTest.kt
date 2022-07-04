@@ -43,7 +43,8 @@ internal class MetricAggregatorYearlyTest : AbstractAggregatorTestBase() {
         assertTrue(file.exists())
 
         assertFileMatches(
-            javaClass.getResourceAsStream("/aggregator/yearly/view/output.csv"), ByteArrayInputStream(file.readBytes())
+            javaClass.getResourceAsStream("/aggregator/yearly/view/output.csv"),
+            ByteArrayInputStream(file.readBytes())
         )
     }
 }

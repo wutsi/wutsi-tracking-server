@@ -8,20 +8,20 @@ import com.wutsi.analytics.tracking.service.pipeline.Pipeline
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
-import org.springframework.boot.web.server.LocalServerPort
+import org.springframework.boot.test.web.server.LocalServerPort
 import org.springframework.http.HttpStatus
 import kotlin.test.assertEquals
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class PushControllerTest : AbstractEndpointTest() {
+class PushControllerTest : AbstractEndpointTest() {
     @LocalServerPort
-    public val port: Int = 0
+    val port: Int = 0
 
     @MockBean
     private lateinit var pipeline: Pipeline
 
     @Test
-    public fun invoke() {
+    fun invoke() {
         // GIVEN
         val url = "http://localhost:$port/v1/tracks"
 
